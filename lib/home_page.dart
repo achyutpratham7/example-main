@@ -175,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: height * 0.02,
                     ),
                     Container(
-                      height: height * 0.35,
+                      height: height * 0.37,
                       width: width * 0.9,
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -257,7 +257,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: height * 0.02,
                     ),
                     Container(
-                      height: height * 0.35,
+                      height: height * 0.37,
                       width: width * 0.9,
                       decoration: BoxDecoration(
                           color: Colors.white,
