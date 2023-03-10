@@ -22,6 +22,10 @@ class _AddAddressState extends State<AddAddress> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    BorderRadiusGeometry radius = BorderRadius.only(
+      topLeft: Radius.circular(24.0),
+      topRight: Radius.circular(24.0),
+    );
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -42,45 +46,10 @@ class _AddAddressState extends State<AddAddress> {
           ),
         ),
         body: SlidingUpPanel(
-            panel: ResponsiveBuilder(builder: (context, SizingInformation) {
-              return Stack(
-                fit: StackFit.passthrough,
-                children: [
-                  Container(
-                    height: height,
-                    color: Colors.amber,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 50,
-                      child: TextFormField(
-                        cursorColor: const Color(0xffef4f5f),
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            isDense: true,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide.none),
-                            hintText: 'Search for area,street name...',
-                            hintStyle: const TextStyle(
-                                color: Colors.grey, fontSize: 18),
-                            prefixIcon: Container(
-                              padding: const EdgeInsets.all(10),
-                              child: SvgPicture.asset(
-                                "assets/images/search-dot.svg",
-                                color: const Color(0xffef4f5f),
-                              ),
-                              width: 18,
-                            )),
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            }),
-            body: Column(
+            minHeight: MediaQuery.of(context).size.height * 0.1,
+            maxHeight: MediaQuery.of(context).size.height * 0.15,
+            borderRadius: radius,
+            panel: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -505,7 +474,45 @@ class _AddAddressState extends State<AddAddress> {
                           style: TextStyle(fontSize: 18),
                         )),
                   )
-                ])));
+                ]),
+            body: ResponsiveBuilder(builder: (context, SizingInformation) {
+              return Stack(
+                fit: StackFit.passthrough,
+                children: [
+                  Container(
+                    height: height,
+                    color: Colors.amber,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 50,
+                      child: TextFormField(
+                        cursorColor: const Color(0xffef4f5f),
+                        decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            isDense: true,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide.none),
+                            hintText: 'Search for area,street name...',
+                            hintStyle: const TextStyle(
+                                color: Colors.grey, fontSize: 18),
+                            prefixIcon: Container(
+                              padding: const EdgeInsets.all(10),
+                              child: SvgPicture.asset(
+                                "assets/images/search-dot.svg",
+                                color: const Color(0xffef4f5f),
+                              ),
+                              width: 18,
+                            )),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            })));
   }
 
   Widget _UseCurrentLocation() {
