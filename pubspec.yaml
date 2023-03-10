@@ -39,6 +39,7 @@ dependencies:
   syncfusion_flutter_gauges: ^20.4.52
   flutter_svg: ^2.0.2
   share_plus: ^6.3.1
+  sliding_up_panel: ^2.0.0+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
