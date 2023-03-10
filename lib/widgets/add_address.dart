@@ -10,6 +10,7 @@ class AddAddress extends StatefulWidget {
 }
 
 class _AddAddressState extends State<AddAddress> {
+  int selected = -1;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -46,7 +47,7 @@ class _AddAddressState extends State<AddAddress> {
                 child: Container(
                   height: 50,
                   child: TextFormField(
-                    cursorColor: Color(0xffef4f5f),
+                    cursorColor: const Color(0xffef4f5f),
                     decoration: InputDecoration(
                         fillColor: Colors.white,
                         filled: true,
@@ -195,7 +196,7 @@ class _AddAddressState extends State<AddAddress> {
       builder: (BuildContext context) {
         // UDE : SizedBox instead of Container for whitespaces
         return SizedBox(
-          height: height * 0.44,
+          height: height * 0.55,
           child: Center(
             child: Padding(
               padding: EdgeInsets.only(
@@ -211,90 +212,187 @@ class _AddAddressState extends State<AddAddress> {
                         padding: EdgeInsets.all(8.0),
                         child: Text(
                           "Enter complete address",
-                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
                   ),
-                  Divider(
+                  SizedBox(
+                    height: height * 0.005,
+                  ),
+                  const Divider(
                     color: Colors.black,
                   ),
-                  Container(
-                      child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        label: Text("Complete Address"),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Colors.black), //<-- SEE HERE
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Colors.black), //<-- SEE HERE
-                          borderRadius: BorderRadius.circular(10.0),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: const [
+                            Text(
+                              "Save address as*",
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.grey),
+                            )
+                          ],
                         ),
                       ),
-                    ),
-                  )),
-                  Container(
-                      child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        label: Text("Floor(Optional)"),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Colors.black), //<-- SEE HERE
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Colors.black), //<-- SEE HERE
-                          borderRadius: BorderRadius.circular(10.0),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            TextButton(
+                                style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: Color(0xffef4f5f)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    fixedSize: Size(width * 0.2, height * 0.01),
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.black),
+                                onPressed: () {},
+                                child: const Text(
+                                  "Home",
+                                  style: TextStyle(fontSize: 18),
+                                )),
+                            SizedBox(
+                              width: width * 0.01,
+                            ),
+                            TextButton(
+                                style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: Color(0xffef4f5f)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    fixedSize: Size(width * 0.2, 5),
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.black),
+                                onPressed: () {},
+                                child: const Text(
+                                  "Work",
+                                  style: TextStyle(fontSize: 18),
+                                )),
+                            SizedBox(
+                              width: width * 0.01,
+                            ),
+                            TextButton(
+                                style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: Color(0xffef4f5f)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    fixedSize: Size(width * 0.2, height * 0.01),
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.black),
+                                onPressed: () {},
+                                child: const Text(
+                                  "Hotel",
+                                  style: TextStyle(fontSize: 18),
+                                )),
+                            SizedBox(
+                              width: width * 0.01,
+                            ),
+                            TextButton(
+                                style: TextButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                            color: Color(0xffef4f5f)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    fixedSize: Size(width * 0.2, height * 0.01),
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.black),
+                                onPressed: () {},
+                                child: const Text(
+                                  "Other",
+                                  style: TextStyle(fontSize: 18),
+                                )),
+                          ],
                         ),
                       ),
-                    ),
-                  )),
-                  Container(
-                      child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        label: Text("Nearby Landmark(optional)"),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Colors.black), //<-- SEE HERE
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              width: 1, color: Colors.black), //<-- SEE HERE
-                          borderRadius: BorderRadius.circular(10.0),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            label: const Text("Complete Address"),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Colors.black), //<-- SEE HERE
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Colors.black), //<-- SEE HERE
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  )),
-                  SizedBox(
-                    height: height * 0.01,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            label: const Text("Floor (Optional)"),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Colors.black), //<-- SEE HERE
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Colors.black), //<-- SEE HERE
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            label: const Text("Nearby Landmark (optional)"),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Colors.black), //<-- SEE HERE
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 1, color: Colors.black), //<-- SEE HERE
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: height * 0.005,
+                      ),
+                      Center(
+                        child: TextButton(
+                            style: TextButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                fixedSize: Size(width * 0.9, 50),
+                                backgroundColor: const Color(0xffef4f5f),
+                                foregroundColor: Colors.white),
+                            onPressed: () {},
+                            child: const Text(
+                              "Save Address",
+                              style: TextStyle(fontSize: 24),
+                            )),
+                      ),
+                      SizedBox(
+                        height: height * 0.01,
+                      ),
+                    ],
                   ),
-                  Center(
-                    child: TextButton(
-                        style: TextButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            fixedSize: Size(width * 0.9, 50),
-                            backgroundColor: const Color(0xffef4f5f),
-                            foregroundColor: Colors.white),
-                        onPressed: () {
-                          bottomsheet(context);
-                        },
-                        child: const Text(
-                          "Enter complete adress",
-                          style: TextStyle(fontSize: 18),
-                        )),
-                  )
                 ],
               ),
             ),
